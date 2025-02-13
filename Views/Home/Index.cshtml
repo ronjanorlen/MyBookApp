@@ -1,8 +1,15 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Startsida";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Min boksamling!</h1>
+    <hr>
+    <p>Välkommen till den digitala bokhyllan. <br>
+    Lägg gärna till en bok eller tre genom att först lägga till en <a asp-area="" asp-controller="Author" asp-action="Index">författare</a> 
+    (om denne inte finns i listan redan) och sedan <a asp-area="" asp-controller="Book" asp-action="Index">boken</a> som hen har skrivit. 
+    </p>
+</div>
+<div class="banner">
+    <img src="~/images/books.jpg" alt="Öppna böcker i en hög">
 </div>

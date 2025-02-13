@@ -1,12 +1,12 @@
 @model MyBookApp.Models.Author
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Författare";
 }
 
-<h1>Edit</h1>
+<h1>Redigera</h1>
 
-<h4>Author</h4>
+<h4>Författare</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -18,15 +18,16 @@
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Spara" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Tillbaka</a>
 </div>
 
 @section Scripts {
