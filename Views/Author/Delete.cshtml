@@ -6,11 +6,12 @@
 
 <h1>Radera</h1>
 
-<h3>Är du säker på att du vill ta bort denna?</h3>
+<h2>Författare</h2>
 <div>
     <h4></h4>
     <hr />
     <dl class="row">
+        <h3 class="mb-4">Är du säker på att du vill ta bort denna författare?</h3>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -21,7 +22,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Radera" class="btn btn-danger" /> |
-        <a asp-action="Index">Tillbaka</a>
+        <input type="submit" value="Radera" class="btn btn-danger" /> 
+        <a asp-action="Index" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Tillbaka</a>
     </form>
 </div>

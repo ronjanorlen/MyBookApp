@@ -4,44 +4,49 @@
     ViewData["Title"] = "Böcker";
 }
 
-<h1>Index</h1>
+<h1>Alla böcker</h1>
 
 <p>
-    <a asp-action="Create">Lägg till ny bok</a>
+    <a class="btn btn-primary mt-3 mb-3" asp-action="Create">Lägg till bok</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PublishedYear)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Author)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PublishedYear)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Redigera</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detaljer</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Radera</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PublishedYear)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Author)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PublishedYear)
+                    </td>
+                    <td>
+                        @(item.Author?.Name ?? "Inte angivet")
+                    </td>
+                    <td class="text-center">
+                        <div class="btn-group" role="group">
+                        <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i> Redigera</a>
+                        <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-circle-info"></i> Detaljer</a>
+                        <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id"><i class="fa-solid fa-trash"></i> Radera</a>
+                    </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

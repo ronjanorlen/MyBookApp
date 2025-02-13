@@ -1,13 +1,13 @@
 @model MyBookApp.Models.Book
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Böcker";
 }
 
-<h1>Details</h1>
+<h1>Detaljer</h1>
 
 <div>
-    <h4>Book</h4>
+    <h2>Bok</h2>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -26,11 +26,11 @@
             @Html.DisplayNameFor(model => model.Author)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Author.Id)
+            @(Model.Author?.Name ?? "Inte angivet")
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model?.Id"><i class="fa-solid fa-pen"></i> Redigera</a> 
+    <a asp-action="Index" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Tillbaka</a>
 </div>
