@@ -17,7 +17,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
-                <th></th>
+                <th>Böcker</th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +27,15 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
+                    <td>
+                        <ul>
+                            @foreach (var book in item.Books ?? Enumerable.Empty<Book>())
+                            {
+                                <li>@book.Title</li>
+                            }
+                        </ul>
+                    </td>
+
                     <td class="text-center">
                         <div class="btn-group" role="group">
                             <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.Id"><i

@@ -22,7 +22,7 @@ namespace MyBookApp.controllers
         // GET: Author
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Authors.ToListAsync());
+            return View(await _context.Authors.Include(a => a.Books).ToListAsync()); // Skicka lista med böcker för författaren 
         }
 
         // GET: Author/Details/5
@@ -139,13 +139,24 @@ namespace MyBookApp.controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var author = await _context.Authors.FindAsync(id);
+            var author = await _context.Authors
+                .Include(a => a.Books)
+                .FirstOrDefaultAsync(a => a.Id == id);
+
             if (author != null)
             {
+                // Ta bort tillhörande böcker
+                if (author.Books != null)
+                {
+                    _context.Books.RemoveRange(author.Books);
+                }
+
+                // Ta bort författaren
                 _context.Authors.Remove(author);
+
+                await _context.SaveChangesAsync(); // Spara ändringar 
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

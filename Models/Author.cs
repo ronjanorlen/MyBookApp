@@ -9,7 +9,7 @@ public class Author
 
     [Required(ErrorMessage = "Du måste ange författare")]
     [Display(Name = "Författare")]
-    public string Name { get; set; } = string.Empty; // Författarens namn
+    public string? Name { get; set; }  // Författarens namn
 
     public List<Book>? Books { get; set; } // Kan ha skrivit flera böcker 
 }
