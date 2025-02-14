@@ -82,7 +82,7 @@ namespace MyBookApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id", book.AuthorId);
+            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Name", book.AuthorId);
             return View(book);
         }
 
